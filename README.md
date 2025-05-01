@@ -17,7 +17,7 @@ we also set the "Enter Play Mode Settings" to - Do not reload Domain or Scene
 Lesson - 02, Import Assets into Games
 ==================================================================
 - (Branch - https://github.com/gauravgitlab/ECS/tree/01_add_ecs_packages)
-- (PR - )
+- (PR - https://github.com/gauravgitlab/ECS/pull/2)
 - Add or Import Assets like Soldier and Zombies Meshes and Textures
 
 ![Screenshot 2025-05-01 064420](https://github.com/user-attachments/assets/fde816cf-5d8b-4dc1-a916-02d39088b9cc)
@@ -25,4 +25,7 @@ Lesson - 02, Import Assets into Games
 - Create a new Scene (GamaScene.scene) and add the ground, add the Player and Zombie
 
 - Removed assets which comes default with unity Projects
+<img width="354" alt="image" src="https://github.com/user-attachments/assets/67968259-4403-41cf-9b9d-f5b3cb1e0713" />
+
+
 
