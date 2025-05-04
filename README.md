@@ -48,3 +48,4 @@ Lesson - 04, Subscene Baking
 - Learn basic understanding of Baking
 - change Entities settings in Preference
     -- Set `Scene View Mode` to `RunTime Data`
+<img width="520" alt="image" src="https://github.com/user-attachments/assets/64199b6d-5f22-4675-9c6f-8ebc102ec11c" />
