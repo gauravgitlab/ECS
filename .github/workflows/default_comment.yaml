@@ -1,0 +1,34 @@
+name: Default Comment on PR
+
+on:
+  pull_request:
+    types: [opened, ready_for_review]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  default-comment:
+    if: github.actor == 'gauravgitlab'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add boilerplate comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          token: ${{ secrets.PAT_FOR_ACTIONS }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            ### Description of Changes <!-- required -->
+            - 
+            
+            ### Screenshot/Gif/Video of Changes <!-- delete this section if change is not visible -->
+
+            This is an automated comment to help with consistency:
+            - [ ] Ensure your PR has a clear title and meaningful description.
+            - [ ] Confirm all relevant tests are added or updated.
+            - [ ] Assign labels if applicable.
+            - [ ] Link related issues or discussions.
+
+            _This message was posted automatically._
+          comment-id: boilerplate-comment
+          edit-mode: nothing
