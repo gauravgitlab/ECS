@@ -4,6 +4,9 @@ on:
   pull_request_target:
     types: [opened, ready_for_review, synchronize, reopened]
 
+permissions:
+  pull-requests: write
+
 jobs:
   auto-approve:
     if: github.actor == 'gauravgitlab'
