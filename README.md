@@ -65,3 +65,5 @@ Lesson - 05,
 - Attach this script with Unit gameobject
 - Create new Script inherit from ISytem.
 
+![image](https://github.com/user-attachments/assets/09441a7a-ad71-43b4-b292-afebfc6eb51c)
+
