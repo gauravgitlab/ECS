@@ -23,8 +23,8 @@ Lesson - 02, Import Assets into Games
 ![Screenshot 2025-05-01 064420](https://github.com/user-attachments/assets/fde816cf-5d8b-4dc1-a916-02d39088b9cc)
 
 - Create a new Scene (GamaScene.scene) and add the ground, add the Player and Zombie
-
 - Removed assets which comes default with unity Projects
+
 <img width="354" alt="image" src="https://github.com/user-attachments/assets/67968259-4403-41cf-9b9d-f5b3cb1e0713" />
 
 Lesson - 03, Post Processing and Lighting settings
@@ -45,6 +45,23 @@ Lesson - 03, Post Processing and Lighting settings
 
 Lesson - 04, Subscene Baking
 ==================================================================
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/04_dots_subscene_baking)
+- (PR - https://github.com/gauravgitlab/ECS/pull/4)
 - Learn basic understanding of Baking
 - change Entities settings in Preference
     -- Set `Scene View Mode` to `RunTime Data`
+
+<img width="520" alt="image" src="https://github.com/user-attachments/assets/64199b6d-5f22-4675-9c6f-8ebc102ec11c" />
+
+Lesson - 05, 
+==================================================================
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/05_create_component_and_unit_setup)
+- (PR - https://github.com/gauravgitlab/ECS/pull/5)
+- Add Unit with Component and System with following steps
+- Add the new empty gameobject in Entity SubScene.
+- Name it Unit, This gameobject is only holding data component.
+- create another empty gameobject as a child inside Unit gameobject and named it as Mesh
+- Create new Monobehavior class, called MoveSpeedAuthoring
+- Attach this script with Unit gameobject
+- Create new Script inherit from ISytem.
+
