@@ -1,7 +1,6 @@
 # ECS Tutorial
 
-Lesson - 01, Add ECS Packages
-==
+## Lesson - 01, Add ECS Packages
 - (Branch - https://github.com/gauravgitlab/ECS/tree/01_add_ecs_packages)
 - (PR - https://github.com/gauravgitlab/ECS/pull/1)
 - Add givn Packages from Package Manager    
@@ -14,8 +13,7 @@ we also set the "Enter Play Mode Settings" to - Do not reload Domain or Scene
 
 ![Screenshot 2025-04-29 220019](https://github.com/user-attachments/assets/572e24a5-c29b-4294-9f71-28d97f88aa60)
 
-Lesson - 02, Import Assets into Games
-==================================================================
+## Lesson - 02, Import Assets into Games
 - (Branch - https://github.com/gauravgitlab/ECS/tree/features/02_add_basic_assets)
 - (PR - https://github.com/gauravgitlab/ECS/pull/2)
 - Add or Import Assets like Soldier and Zombies Meshes and Textures
@@ -27,8 +25,7 @@ Lesson - 02, Import Assets into Games
 
 <img width="354" alt="image" src="https://github.com/user-attachments/assets/67968259-4403-41cf-9b9d-f5b3cb1e0713" />
 
-Lesson - 03, Post Processing and Lighting settings
-==================================================================
+## Lesson - 03, Post Processing and Lighting settings
 - (Branch - https://github.com/gauravgitlab/ECS/tree/features/03_post_processing_lighting)
 - (PR - https://github.com/gauravgitlab/ECS/pull/3)
 - The changes are mostly setup the post processing and lighting setting in scene
@@ -43,8 +40,7 @@ Lesson - 03, Post Processing and Lighting settings
     - Set Radius to 0.6
     - set Direct Lighting Streangth to 1
 
-Lesson - 04, Subscene Baking
-==================================================================
+## Lesson - 04, Subscene Baking
 - (Branch - https://github.com/gauravgitlab/ECS/tree/features/04_dots_subscene_baking)
 - (PR - https://github.com/gauravgitlab/ECS/pull/4)
 - Learn basic understanding of Baking
@@ -53,8 +49,7 @@ Lesson - 04, Subscene Baking
 
 <img width="520" alt="image" src="https://github.com/user-attachments/assets/64199b6d-5f22-4675-9c6f-8ebc102ec11c" />
 
-Lesson - 05, Create component and Unit Setup
-==================================================================
+## Lesson - 05, Create component and Unit Setup
 - (Branch - https://github.com/gauravgitlab/ECS/tree/features/05_create_component_and_unit_setup)
 - (PR - https://github.com/gauravgitlab/ECS/pull/5)
 - Add Unit with Component and System with following steps
@@ -67,17 +62,23 @@ Lesson - 05, Create component and Unit Setup
 
 ![image](https://github.com/user-attachments/assets/09441a7a-ad71-43b4-b292-afebfc6eb51c)
 
-Lesson - 06, Move Unit using Physics and Mouse World Position
-==================================================================
+## Lesson - 06, Move Unit using Physics and Mouse World Position
 - (Branch - https://github.com/gauravgitlab/ECS/tree/features/06_unit_move_physics)
 - (PR - https://github.com/gauravgitlab/ECS/pull/6)
 - Move Unit using Physics
 - In `UnitMoverSystem.cs`, we use `PhysicsVelocity` to move the unit linearly.
 - we applied the `capsule collider` and `Rigidbody` to the unit.
-Note - the ECS physics works completely different to Normal Gameobject Physics, so it won't interact with each other.
 
-- Mouse World Position
+![image](https://github.com/user-attachments/assets/ad264990-f898-4867-85b7-bcb9c3a8b0b6)
+![image](https://github.com/user-attachments/assets/047a7f18-e765-455d-9c5b-b7096e4b40bf)
+
+
+Note - the ECS physics works completely different to Normal Gameobject Physics, so it won't interact with each other.
+  
+### Lesson - 6.1, Mouse World Position
 - we add the Monobehavoiur scrpit `MouseWorldPosition.cs` and make it singleton which returns the Mouse Position
 - Create Empty gameobject and attach the scrpit `MouseWorldPosition.cs`
 - Use the MouseWorldPosition in `UnitMoveSystem.cs` to move and rotate the unit.
+![image](https://github.com/user-attachments/assets/31e07fb5-98e3-4cb9-85b4-12223f300e07)
+
 
