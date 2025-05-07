@@ -53,7 +53,7 @@ Lesson - 04, Subscene Baking
 
 <img width="520" alt="image" src="https://github.com/user-attachments/assets/64199b6d-5f22-4675-9c6f-8ebc102ec11c" />
 
-Lesson - 05, 
+Lesson - 05, Create component and Unit Setup
 ==================================================================
 - (Branch - https://github.com/gauravgitlab/ECS/tree/features/05_create_component_and_unit_setup)
 - (PR - https://github.com/gauravgitlab/ECS/pull/5)
@@ -66,4 +66,18 @@ Lesson - 05,
 - Create new Script inherit from ISytem.
 
 ![image](https://github.com/user-attachments/assets/09441a7a-ad71-43b4-b292-afebfc6eb51c)
+
+Lesson - 06, Move Unit using Physics and Mouse World Position
+==================================================================
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/06_unit_move_physics)
+- (PR - https://github.com/gauravgitlab/ECS/pull/6)
+- Move Unit using Physics
+- In `UnitMoverSystem.cs`, we use `PhysicsVelocity` to move the unit linearly.
+- we applied the `capsule collider` and `Rigidbody` to the unit.
+Note - the ECS physics works completely different to Normal Gameobject Physics, so it won't interact with each other.
+
+- Mouse World Position
+- we add the Monobehavoiur scrpit `MouseWorldPosition.cs` and make it singleton which returns the Mouse Position
+- Create Empty gameobject and attach the scrpit `MouseWorldPosition.cs`
+- Use the MouseWorldPosition in `UnitMoveSystem.cs` to move and rotate the unit.
 

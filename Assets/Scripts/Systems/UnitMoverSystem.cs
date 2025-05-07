@@ -21,11 +21,12 @@ partial struct UnitMoverSystem : ISystem
             float3 targetPosition = MouseWorldPostion.Instance.GetPosition();
             float3 moveDirection = targetPosition - localTransform.ValueRO.Position;
             moveDirection = math.normalize(moveDirection);
-            
-            localTransform.ValueRW.Rotation = quaternion.LookRotation(moveDirection, math.up());
+
+            float rotationSpeed = SystemAPI.Time.DeltaTime * 10.0f;
+            localTransform.ValueRW.Rotation = math.slerp(localTransform.ValueRO.Rotation, 
+                quaternion.LookRotation(moveDirection, math.up()), rotationSpeed);
             physicsVelocity.ValueRW.Linear = moveDirection * moveSpeed.ValueRO.value;
             physicsVelocity.ValueRW.Angular = float3.zero;
-            //localTransform.ValueRW.Position += moveDirection * moveSpeed.ValueRO.value * SystemAPI.Time.DeltaTime;
         }
     }
 
