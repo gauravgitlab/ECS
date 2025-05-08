@@ -1,0 +1,48 @@
+name: Auto PR Description on Create
+
+on:
+  pull_request:
+    types: [opened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  set-pr-description:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install GitHub CLI
+        run: sudo apt-get install gh -y
+
+      - name: Set PR Description (only if empty)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Fetch current PR body
+          body=$(gh pr view ${{ github.event.pull_request.number }} --json body -q ".body")
+          
+          # If empty, set default boilerplate
+          if [ -z "$body" ] || [ "$body" == "null" ]; then
+            gh pr edit ${{ github.event.pull_request.number }} \
+              --repo "${{ github.repository }}" \
+              --body '**Description of Changes**
+
+-
+
+**Screenshot/Gif/Video of Changes**
+
+This is an automated comment to help with consistency:
+- [ ] Ensure your PR has a clear title and meaningful description.
+- [ ] Confirm all relevant tests are added or updated.
+- [ ] Assign labels if applicable.
+- [ ] Link related issues or discussions.
+
+_This message was posted automatically._'
+          else
+            echo "PR already has a description. Skipping update."
+          fi
