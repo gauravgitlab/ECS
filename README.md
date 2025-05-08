@@ -82,7 +82,11 @@ Note - the ECS physics works completely different to Normal Gameobject Physics, 
 ![image](https://github.com/user-attachments/assets/31e07fb5-98e3-4cb9-85b4-12223f300e07)
 
 
-## Lesson - 7, 
-- (Branch - https://github.com/gauravgitlab/ECS/tree/features/06_unit_move_physics)
+## Lesson - 7, Move Unit baesd on Mouse click position
+- (Branch - [https://github.com/gauravgitlab/ECS/tree/features/06_unit_move_physics](https://github.com/gauravgitlab/ECS/tree/features/07_click_to_move))
 - (PR - https://github.com/gauravgitlab/ECS/pull/7)
 - first rename `MoveSpeedAuthoring` class to `UnitMoverAuthoring`
+- Created the new script UnitSelectionManager.cs which run on update method if user mouse button clicked or not. If clicked we run the query for getting all the units containing UnitMover Component to get , and set the target position based on mouse button click position.
+- In the given screenshots, we temporary created few Units which are moving towards the mouse clicked position.
+![image](https://github.com/user-attachments/assets/00ac339a-493c-4bc7-85eb-55f7e83405ba)
+
