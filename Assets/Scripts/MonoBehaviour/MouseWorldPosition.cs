@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 
-public class MouseWorldPostion : MonoBehaviour
+public class MouseWorldPosition : MonoBehaviour
 {
-    public static MouseWorldPostion Instance { get; private set; }
+    public static MouseWorldPosition Instance { get; private set; }
 
     private void Awake()
     {

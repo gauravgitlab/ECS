@@ -82,3 +82,7 @@ Note - the ECS physics works completely different to Normal Gameobject Physics, 
 ![image](https://github.com/user-attachments/assets/31e07fb5-98e3-4cb9-85b4-12223f300e07)
 
 
+## Lesson - 7, 
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/06_unit_move_physics)
+- (PR - https://github.com/gauravgitlab/ECS/pull/7)
+- first rename `MoveSpeedAuthoring` class to `UnitMoverAuthoring`
