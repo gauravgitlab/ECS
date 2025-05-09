@@ -79,6 +79,7 @@ Note - the ECS physics works completely different to Normal Gameobject Physics, 
 - we add the Monobehavoiur scrpit `MouseWorldPosition.cs` and make it singleton which returns the Mouse Position
 - Create Empty gameobject and attach the scrpit `MouseWorldPosition.cs`
 - Use the MouseWorldPosition in `UnitMoveSystem.cs` to move and rotate the unit.
+
 ![image](https://github.com/user-attachments/assets/31e07fb5-98e3-4cb9-85b4-12223f300e07)
 
 
@@ -88,16 +89,22 @@ Note - the ECS physics works completely different to Normal Gameobject Physics, 
 - first rename `MoveSpeedAuthoring` class to `UnitMoverAuthoring`
 - Created the new script UnitSelectionManager.cs which run on update method if user mouse button clicked or not. If clicked we run the query for getting all the units containing UnitMover Component to get , and set the target position based on mouse button click position.
 - In the given screenshots, we temporary created few Units which are moving towards the mouse clicked position.
+
 ![image](https://github.com/user-attachments/assets/00ac339a-493c-4bc7-85eb-55f7e83405ba)
 
 ## Lesson - 8, Move Job system
-- (Branch - )
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/08_move_job_system)
 - (PR - https://github.com/gauravgitlab/ECS/pull/8)
 - we are create a job to move the unit instead of using System update.
 - Job is useful to perform better and efficient.
 - for demo purpose we created 10,000 units and move the units using `System` (which is running on main thread), using `job` (which is running on worker thread) and using `Job + Burst`
 - we got the following output
-    System = 9.5ms
-    Job = 0.290ms
-    Job+Burst = 0.035ms
+  - System = 9.5ms,
+  - Job = 0.290ms,
+  - Job+Burst = 0.035ms
+    
+![image](https://github.com/user-attachments/assets/86fecc5d-7576-4410-9d7b-46fc0888e919)
+![image](https://github.com/user-attachments/assets/17950972-8dfa-44a3-a821-d68009d85bd1)
+
+
 
