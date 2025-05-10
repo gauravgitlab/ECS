@@ -25,7 +25,7 @@ public class UnitSelectionManager : MonoBehaviour
          
          EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
          EntityQuery entityQuery = new EntityQueryBuilder(Allocator.Temp).
-            WithAll<UnitMover>().Build(entityManager);
+            WithAll<UnitMover, Selected>().Build(entityManager);
          
          NativeArray<Entity> entityArray = entityQuery.ToEntityArray(Allocator.Temp);
          NativeArray<UnitMover> unitMoverArray = entityQuery.ToComponentDataArray<UnitMover>(Allocator.Temp);
