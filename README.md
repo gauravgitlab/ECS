@@ -107,4 +107,10 @@ Note - the ECS physics works completely different to Normal Gameobject Physics, 
 ![image](https://github.com/user-attachments/assets/17950972-8dfa-44a3-a821-d68009d85bd1)
 
 
-
+## Lesson - 9, Unit select Single
+- (Branch - )
+- (PR - https://github.com/gauravgitlab/ECS/pull/9)
+- Dots does not support Sprint Rendering, so for showing the selected unit, we are adding a `Quad` gameobject with mesh attached to it.
+- Dots are adding the `Companion Link` and `Companion Reference` components to those which entity which are not able to baked by dots.
+- In this case `Selected Gameobject` with `Sprite Renderer` attached to it.
+- so we are removing the `SpriteRenderer` component from `Selected` gameobject and attached the `Mesh Renderer` to it.
