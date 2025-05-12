@@ -138,3 +138,9 @@ That's why we are not using SpriteRenderer but MeshRenderer
 
 
 
+## Lesson - 10, Unit Selection Multiple, UI Setup
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/10_unit_selection_mutiple)
+- (PR - https://github.com/gauravgitlab/ECS/pull/10)
+### Description
+- we are adding the UI for represting the `selection area`,
+- we are selecting the `Unit` for moving on `target` position by Input Mouse position button 0.
