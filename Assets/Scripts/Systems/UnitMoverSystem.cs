@@ -69,6 +69,11 @@ public partial struct UnitMoverJob : IJobEntity
     /// </summary>
     public void Execute(ref LocalTransform localTransform, in UnitMover unitMover, ref PhysicsVelocity physicsVelocity)
     {
+        if(unitMover.targetPosition.Equals(float3.zero))
+        {
+            return;
+        }
+        
         float3 targetPosition = unitMover.targetPosition;
         float3 moveDirection = targetPosition - localTransform.Position;
         
