@@ -144,3 +144,6 @@ That's why we are not using SpriteRenderer but MeshRenderer
 ### Description
 - we are adding the UI for represting the `selection area`,
 - we are selecting the `Unit` for moving on `target` position by Input Mouse position button 0.
+
+![image](https://github.com/user-attachments/assets/2737194d-1089-4472-977c-92660a716869)
+
