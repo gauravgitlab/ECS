@@ -137,7 +137,6 @@ That's why we are not using SpriteRenderer but MeshRenderer
 ![image](https://github.com/user-attachments/assets/87a87ede-8d32-432e-889e-1a3d5e16ddc4)
 
 
-
 ## Lesson - 10, Unit Selection Multiple, UI Setup
 - (Branch - https://github.com/gauravgitlab/ECS/tree/features/10_unit_selection_mutiple)
 - (PR - https://github.com/gauravgitlab/ECS/pull/10)
@@ -146,4 +145,12 @@ That's why we are not using SpriteRenderer but MeshRenderer
 - we are selecting the `Unit` for moving on `target` position by Input Mouse position button 0.
 
 ![image](https://github.com/user-attachments/assets/2737194d-1089-4472-977c-92660a716869)
+
+
+## Lesson - 11, DOTS Physics, Raycast
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/11_dots_physics_raycast)
+- (PR - https://github.com/gauravgitlab/ECS/pull/11)
+### Description
+- Add Layer into `Unit` Prefab
+- Use DOTS Physics, raycasting to get the `Entity` when cast a ray from `Camera`.
 
