@@ -3,6 +3,7 @@
 ## Lesson - 01, Add ECS Packages
 - (Branch - https://github.com/gauravgitlab/ECS/tree/01_add_ecs_packages)
 - (PR - https://github.com/gauravgitlab/ECS/pull/1)
+### Description
 - Add givn Packages from Package Manager    
     - Entities
     - Entities Graphics
@@ -16,6 +17,7 @@ we also set the "Enter Play Mode Settings" to - Do not reload Domain or Scene
 ## Lesson - 02, Import Assets into Games
 - (Branch - https://github.com/gauravgitlab/ECS/tree/features/02_add_basic_assets)
 - (PR - https://github.com/gauravgitlab/ECS/pull/2)
+### Description
 - Add or Import Assets like Soldier and Zombies Meshes and Textures
 
 ![Screenshot 2025-05-01 064420](https://github.com/user-attachments/assets/fde816cf-5d8b-4dc1-a916-02d39088b9cc)
@@ -28,8 +30,8 @@ we also set the "Enter Play Mode Settings" to - Do not reload Domain or Scene
 ## Lesson - 03, Post Processing and Lighting settings
 - (Branch - https://github.com/gauravgitlab/ECS/tree/features/03_post_processing_lighting)
 - (PR - https://github.com/gauravgitlab/ECS/pull/3)
+### Description
 - The changes are mostly setup the post processing and lighting setting in scene
-
 - There were `Global Volume` Gameobject in the scene, we rename the volume Profile object to GameSceneProfile, and remove component like Motion Blur and ToneMapping.
 - Then we go to Windowns --> Rendering --> Ligting, and click to Environment tab .
     - we change the source of Environment Lighting --> Color and use color value (222,222,222)
@@ -53,6 +55,7 @@ we also set the "Enter Play Mode Settings" to - Do not reload Domain or Scene
 ## Lesson - 05, Create component and Unit Setup
 - (Branch - https://github.com/gauravgitlab/ECS/tree/features/05_create_component_and_unit_setup)
 - (PR - https://github.com/gauravgitlab/ECS/pull/5)
+### Description
 - Add Unit with Component and System with following steps
 - Add the new empty gameobject in Entity SubScene.
 - Name it Unit, This gameobject is only holding data component.
@@ -66,6 +69,7 @@ we also set the "Enter Play Mode Settings" to - Do not reload Domain or Scene
 ## Lesson - 06, Move Unit using Physics and Mouse World Position
 - (Branch - https://github.com/gauravgitlab/ECS/tree/features/06_unit_move_physics)
 - (PR - https://github.com/gauravgitlab/ECS/pull/6)
+### Description
 - Move Unit using Physics
 - In `UnitMoverSystem.cs`, we use `PhysicsVelocity` to move the unit linearly.
 - we applied the `capsule collider` and `Rigidbody` to the unit.
@@ -80,14 +84,76 @@ Note - the ECS physics works completely different to Normal Gameobject Physics, 
 - we add the Monobehavoiur scrpit `MouseWorldPosition.cs` and make it singleton which returns the Mouse Position
 - Create Empty gameobject and attach the scrpit `MouseWorldPosition.cs`
 - Use the MouseWorldPosition in `UnitMoveSystem.cs` to move and rotate the unit.
+
 ![image](https://github.com/user-attachments/assets/31e07fb5-98e3-4cb9-85b4-12223f300e07)
 
 
 ## Lesson - 7, Move Unit baesd on Mouse click position
-- (Branch - [https://github.com/gauravgitlab/ECS/tree/features/06_unit_move_physics](https://github.com/gauravgitlab/ECS/tree/features/07_click_to_move))
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/07_click_to_move)
 - (PR - https://github.com/gauravgitlab/ECS/pull/7)
+### Description
 - first rename `MoveSpeedAuthoring` class to `UnitMoverAuthoring`
 - Created the new script UnitSelectionManager.cs which run on update method if user mouse button clicked or not. If clicked we run the query for getting all the units containing UnitMover Component to get , and set the target position based on mouse button click position.
 - In the given screenshots, we temporary created few Units which are moving towards the mouse clicked position.
+
 ![image](https://github.com/user-attachments/assets/00ac339a-493c-4bc7-85eb-55f7e83405ba)
+
+## Lesson - 8, Move Job system
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/08_move_job_system)
+- (PR - https://github.com/gauravgitlab/ECS/pull/8)
+### Description
+- we are create a job to move the unit instead of using System update.
+- Job is useful to perform better and efficient.
+- for demo purpose we created 10,000 units and move the units using `System` (which is running on main thread), using `job` (which is running on worker thread) and using `Job + Burst`
+- we got the following output
+  - System = 9.5ms,
+  - Job = 0.290ms,
+  - Job+Burst = 0.035ms
+    
+![image](https://github.com/user-attachments/assets/86fecc5d-7576-4410-9d7b-46fc0888e919)
+![image](https://github.com/user-attachments/assets/17950972-8dfa-44a3-a821-d68009d85bd1)
+
+
+## Lesson - 9, Unit select Single
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/09_unit_selection_single)
+- (PR - https://github.com/gauravgitlab/ECS/pull/9)
+### Description
+- We added the Unit as Prefab.
+- We also added selected child gameobject inside Unit prefab, This selected gameobject have Mesh Renderer GameObject.
+- We added the SelectedAuthoring component to Unit Gameobject.
+### NOTE
+- Dots does not support Sprint Rendering, so for showing the selected unit, we are adding a `Quad` gameobject with mesh attached to it.
+- Dots are adding the `Companion Link` and `Companion Reference` components to those which entity which are not able to baked by dots.
+- In this case `Selected Gameobject` with `Sprite Renderer` attached to it.
+- so we are removing the `SpriteRenderer` component from `Selected` gameobject and attached the `Mesh Renderer` to it.
+### Screenshots
+A Unit Gameobject with Selected Component
+If the Component does not have any properties, it will come inside Tags
+![image](https://github.com/user-attachments/assets/70273c74-ce30-40cd-8758-e2859815abd0)
+
+If Selected Gameobject contains SpriteRenderer component, Dots added Companion Link and Companion Reference components to entities.
+That's why we are not using SpriteRenderer but MeshRenderer
+![image](https://github.com/user-attachments/assets/a8208a0e-8899-4446-b689-e6eabecdc4b7)
+![image](https://github.com/user-attachments/assets/2750ef45-a0cc-4b1b-9b1a-4eba2041de7c)
+![image](https://github.com/user-attachments/assets/87a87ede-8d32-432e-889e-1a3d5e16ddc4)
+
+
+## Lesson - 10, Unit Selection Multiple, UI Setup
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/10_unit_selection_mutiple)
+- (PR - https://github.com/gauravgitlab/ECS/pull/10)
+### Description
+- we are adding the UI for represting the `selection area`,
+- we are selecting the `Unit` for moving on `target` position by Input Mouse position button 0.
+
+![image](https://github.com/user-attachments/assets/2737194d-1089-4472-977c-92660a716869)
+
+
+## Lesson - 11, DOTS Physics, Raycast
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/11_dots_physics_raycast)
+- (PR - https://github.com/gauravgitlab/ECS/pull/11)
+### Description
+- Add Layer into `Unit` Prefab
+- Use DOTS Physics, raycasting to get the `Entity` when cast a ray from `Camera`.
+
+![image](https://github.com/user-attachments/assets/b4dccb00-cc52-4bd9-a910-2e7e216481f4)
 
