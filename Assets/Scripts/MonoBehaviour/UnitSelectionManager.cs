@@ -1,6 +1,7 @@
 using System;
 using Unity.Collections;
 using Unity.Entities;
+using Unity.Mathematics;
 using Unity.Physics;
 using Unity.Transforms;
 using UnityEngine;
@@ -96,10 +97,13 @@ public class UnitSelectionManager : MonoBehaviour
          
       NativeArray<Entity> entityArray = entityQuery.ToEntityArray(Allocator.Temp);
       NativeArray<UnitMover> unitMoverArray = entityQuery.ToComponentDataArray<UnitMover>(Allocator.Temp);
+      
+      NativeArray<float3> movePositionArray = GenerateMovePositionArray(mousePosition, entityArray.Length);
+
       for (int i = 0; i < unitMoverArray.Length; i++)
       {
          UnitMover unitMover = unitMoverArray[i];
-         unitMover.targetPosition = mousePosition;
+         unitMover.targetPosition = movePositionArray[i];
          unitMoverArray[i] = unitMover;
       }
       entityQuery.CopyFromComponentDataArray(unitMoverArray);
@@ -173,5 +177,45 @@ public class UnitSelectionManager : MonoBehaviour
       return new Rect(lowerLeftCorner.x, lowerLeftCorner.y, 
          upperRightCorner.x - lowerLeftCorner.x, 
          upperRightCorner.y - lowerLeftCorner.y);
+   }
+
+   private NativeArray<float3> GenerateMovePositionArray(float3 targetPosition, int positionCount)
+   {
+      NativeArray<float3> positionArray = new NativeArray<float3>(positionCount, Allocator.Temp);
+      if (positionCount == 0)
+      {
+         return positionArray;
+      }
+
+      positionArray[0] = targetPosition;
+      if (positionCount == 1)
+      {
+         return positionArray;
+      }
+
+      float ringSize = 2.2f;
+      int ring = 0;
+      int positionIndex = 1;
+      
+      while(positionIndex < positionCount)
+      {
+         int ringPositionCount = 3 + ring * 2;
+
+         for (int i = 0; i < ringPositionCount; i++)
+         {
+            float angle = i * (math.PI2 / ringPositionCount);
+            float3 ringVector = math.rotate(quaternion.RotateY(angle), new float3(ringSize * (ringSize + 1), 0, 0));
+            float3 ringPosition = targetPosition + ringVector;
+            
+            positionArray[positionIndex] = ringPosition;
+            positionIndex++;
+            
+            if (positionIndex >= positionCount)
+               break;
+         }
+         ring++;
+      }
+
+      return positionArray;
    }
 }
