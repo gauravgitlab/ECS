@@ -40,13 +40,19 @@ public class UnitSelectionManager : MonoBehaviour
       {
          Vector2 selectionEndMousePosition = Input.mousePosition;
          
-         // get all entities with the `Selected` component and make every entity not selected
+         // get all entities with the `Selected` component and make every entity not selected first
          EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
          EntityQuery entityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<Selected>().Build(entityManager);
          NativeArray<Entity> entityArray = entityQuery.ToEntityArray(Allocator.Temp);
+         NativeArray<Selected> selectedArray = entityQuery.ToComponentDataArray<Selected>(Allocator.Temp);
+         
          for (int i = 0; i < entityArray.Length; i++)
          {
             entityManager.SetComponentEnabled<Selected>(entityArray[i], false);
+            Selected selected = selectedArray[i];
+            selected.onDeselected = true;
+            selectedArray[i] = selected;
+            entityManager.SetComponentData(entityArray[i], selected);
          }
          
          // get the selection area rect, and check if the selection area is a multiple selection or not, for selecting multiple units or single unit
@@ -126,6 +132,9 @@ public class UnitSelectionManager : MonoBehaviour
          if (selectionAreaRect.Contains(screenPosition))
          {
             entityManager.SetComponentEnabled<Selected>(entityArray[i], true);
+            Selected selected = entityManager.GetComponentData<Selected>(entityArray[i]);
+            selected.onSelected = true;
+            entityManager.SetComponentData(entityArray[i], selected);
          }
       }
    }
@@ -159,6 +168,9 @@ public class UnitSelectionManager : MonoBehaviour
          {
             // hit a unit
             entityManager.SetComponentEnabled<Selected>(entity, true);
+            Selected selected = entityManager.GetComponentData<Selected>(entity);
+            selected.onSelected = true;
+            entityManager.SetComponentData(entity, selected);
          }
       }
    }
