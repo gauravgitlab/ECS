@@ -156,3 +156,22 @@ That's why we are not using SpriteRenderer but MeshRenderer
 
 ![image](https://github.com/user-attachments/assets/b4dccb00-cc52-4bd9-a910-2e7e216481f4)
 
+## Lesson - 12, Generate more position for Units
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/12_generate_move_positions)
+- (PR - https://github.com/gauravgitlab/ECS/pull/12)
+### Description
+- Remove `isTrigger` from Unit prefab.
+- Write a method to generate more position based on creating position on clicked mouse position and its around ring areas.
+
+![image](https://github.com/user-attachments/assets/a96c9a26-4c62-4157-9e5f-009db9d42dc4)
+
+## Lesson - 13, Added the event for selecting and deselecting unit 
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/13_unit_events)
+- (PR - https://github.com/gauravgitlab/ECS/pull/13)
+### Description
+- added the `event` for when we `select` and `deselect` the units
+- Use `UpdateBefore` and `UpdateInGroup` to update the system execution order.
+
+![image](https://github.com/user-attachments/assets/400077b1-3874-4b71-8fc4-7ad2e8223712)
+
+
