@@ -1,3 +1,4 @@
+using System.Linq;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
@@ -17,10 +18,18 @@ partial struct FindTargetSystem : ISystem
 
         foreach ((RefRO<LocalTransform> localTransform, RefRW<FindTarget> findTarget, RefRW<Target> target) in SystemAPI.Query<RefRO<LocalTransform>, RefRW<FindTarget>, RefRW<Target>>())
         {
+            // TODO : first we can avoid the query if the target is already set
+            // TODO : second, we need to set target null, if the target is not in the range anymore
+            // // if the target is already set, we don't need to find the target again
+            // if(target.ValueRO.targetEntity != Entity.Null)
+            // {
+            //     continue;
+            // }
+            
             // running the collision check timer based instead of every frame
+            findTarget.ValueRW.timer -= SystemAPI.Time.DeltaTime;
             if (findTarget.ValueRO.timer > 0)
             {
-                findTarget.ValueRW.timer -= SystemAPI.Time.DeltaTime;
                 continue;
             }
             findTarget.ValueRW.timer = findTarget.ValueRO.timerMax;

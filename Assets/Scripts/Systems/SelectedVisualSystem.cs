@@ -18,18 +18,18 @@ public partial struct SelectedVisualSystem : ISystem
     {
         foreach (RefRO<Selected> selected in SystemAPI.Query<RefRO<Selected>>().WithPresent<Selected>())
         {
-            if (selected.ValueRO.onSelected)
-            {
-                //UnityEngine.Debug.Log($"Selected entity: {selected.ValueRO.visualEntity}");
-                RefRW<LocalTransform> visualLocalTransform = SystemAPI.GetComponentRW<LocalTransform>(selected.ValueRO.visualEntity);
-                visualLocalTransform.ValueRW.Scale = selected.ValueRO.showScale;
-            }
-
             if (selected.ValueRO.onDeselected)
             {
                 //UnityEngine.Debug.Log($"Deselected entity: {selected.ValueRO.visualEntity}");
                 RefRW<LocalTransform> visualLocalTransform = SystemAPI.GetComponentRW<LocalTransform>(selected.ValueRO.visualEntity);
                 visualLocalTransform.ValueRW.Scale = 0;
+            }
+            
+            if (selected.ValueRO.onSelected)
+            {
+                //UnityEngine.Debug.Log($"Selected entity: {selected.ValueRO.visualEntity}");
+                RefRW<LocalTransform> visualLocalTransform = SystemAPI.GetComponentRW<LocalTransform>(selected.ValueRO.visualEntity);
+                visualLocalTransform.ValueRW.Scale = selected.ValueRO.showScale;
             }
         }
     }

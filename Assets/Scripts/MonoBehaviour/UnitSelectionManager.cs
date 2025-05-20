@@ -164,7 +164,7 @@ public class UnitSelectionManager : MonoBehaviour
       if(collisionWorld.CastRay(raycastInput, out Unity.Physics.RaycastHit raycastHit))
       {
          Entity entity = raycastHit.Entity;
-         if (entityManager.HasComponent<Unit>(entity))
+         if (entityManager.HasComponent<Unit>(entity) && entityManager.HasComponent<Selected>(entity))
          {
             // hit a unit
             entityManager.SetComponentEnabled<Selected>(entity, true);
