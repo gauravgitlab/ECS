@@ -306,6 +306,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoldierUnit
       objectReference: {fileID: 0}
+    - target: {fileID: 6627728850896468784, guid: 73e9de87990efbc43a5b180092bd766f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8519939681605153736, guid: 73e9de87990efbc43a5b180092bd766f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.0299997
@@ -362,6 +366,10 @@ PrefabInstance:
     - target: {fileID: 6627728850896468784, guid: 73e9de87990efbc43a5b180092bd766f, type: 3}
       propertyPath: m_Name
       value: SoldierUnit
+      objectReference: {fileID: 0}
+    - target: {fileID: 6627728850896468784, guid: 73e9de87990efbc43a5b180092bd766f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8519939681605153736, guid: 73e9de87990efbc43a5b180092bd766f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -420,6 +428,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoldierUnit
       objectReference: {fileID: 0}
+    - target: {fileID: 6627728850896468784, guid: 73e9de87990efbc43a5b180092bd766f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8519939681605153736, guid: 73e9de87990efbc43a5b180092bd766f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16.31
@@ -477,6 +489,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoldierUnit
       objectReference: {fileID: 0}
+    - target: {fileID: 6627728850896468784, guid: 73e9de87990efbc43a5b180092bd766f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8519939681605153736, guid: 73e9de87990efbc43a5b180092bd766f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16.31
@@ -533,6 +549,10 @@ PrefabInstance:
     - target: {fileID: 6627728850896468784, guid: 73e9de87990efbc43a5b180092bd766f, type: 3}
       propertyPath: m_Name
       value: SoldierUnit
+      objectReference: {fileID: 0}
+    - target: {fileID: 6627728850896468784, guid: 73e9de87990efbc43a5b180092bd766f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8519939681605153736, guid: 73e9de87990efbc43a5b180092bd766f, type: 3}
       propertyPath: m_LocalPosition.x
