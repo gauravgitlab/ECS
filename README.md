@@ -157,3 +157,39 @@ That's why we are not using SpriteRenderer but MeshRenderer
 
 ![image](https://github.com/user-attachments/assets/b4dccb00-cc52-4bd9-a910-2e7e216481f4)
 
+## Lesson - 12, Generate more position for Units
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/12_generate_move_positions)
+- (PR - https://github.com/gauravgitlab/ECS/pull/12)
+### Description
+- Remove `isTrigger` from Unit prefab.
+- Write a method to generate more position based on creating position on clicked mouse position and its around ring areas.
+
+![image](https://github.com/user-attachments/assets/a96c9a26-4c62-4157-9e5f-009db9d42dc4)
+
+## Lesson - 13, Added the event for selecting and deselecting unit 
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/13_unit_events)
+- (PR - https://github.com/gauravgitlab/ECS/pull/13)
+### Description
+- added the `event` for when we `select` and `deselect` the units
+- Use `UpdateBefore` and `UpdateInGroup` to update the system execution order.
+
+![image](https://github.com/user-attachments/assets/400077b1-3874-4b71-8fc4-7ad2e8223712)
+
+## Lesson - 14, Add Enemy, and assign Find Target and Shoot Target Systems
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/14_enemies_factions)
+- (PR - https://github.com/gauravgitlab/ECS/pull/14)
+### Description
+- Create Base Unit prefab, and create variant prefab for Soldier and Zombie
+- attaching the FindTarget Component to `Soldier` and `Zombie`
+- attaching the Target component to `Soldier` and `Zombie`. This component is basically to store the target when we trying to find it.
+- Add the faction for both `Soldier` and `Zombie`
+- Create the `FindTargetSystem` and `ShootAttackSystem`
+  
+![image](https://github.com/user-attachments/assets/e5b25862-49a7-44f7-9baf-6049f80f399b)
+
+- added components in `Soldier`
+![image](https://github.com/user-attachments/assets/fff9ca7f-d0f3-4412-bcb0-59204a605488)
+
+- added components to Zombie. Zombie does not have shoot attack because it will do Melee
+![image](https://github.com/user-attachments/assets/c4eade7d-a205-495d-ae2b-fe9979e94656)
+
