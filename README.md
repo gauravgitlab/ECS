@@ -192,3 +192,15 @@ That's why we are not using SpriteRenderer but MeshRenderer
 - added components to Zombie. Zombie does not have shoot attack because it will do Melee
 ![image](https://github.com/user-attachments/assets/c4eade7d-a205-495d-ae2b-fe9979e94656)
 
+## Lesson - 15, Health
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/15_health)
+- (PR - https://github.com/gauravgitlab/ECS/pull/15)
+### Description
+- add the `heath` Component in `Base Unit` Prefab
+- reducing the health of the target entity, in ShootAttackSystem
+- Write `HealthDeadTestSystem` to destroy the entity when its health reduced to 0, using EntityCommandBuffer
+- Write `ResetTargetSystem` to make the entity Null, when its destroyed.
+- we need to attach Linked Entity Group Authoring Component to BaseUnit prefab, because when we destroy the Entity it were just destroy the entity, but not the mesh in child component.
+
+![image](https://github.com/user-attachments/assets/8e2e5fbf-924e-4bc9-a203-543b64e11bbe)
+
