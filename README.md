@@ -204,3 +204,19 @@ That's why we are not using SpriteRenderer but MeshRenderer
 
 ![image](https://github.com/user-attachments/assets/8e2e5fbf-924e-4bc9-a203-543b64e11bbe)
 
+## Lesson - 15, Bullet
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/16_bullet)
+- (PR - https://github.com/gauravgitlab/ECS/pull/16)
+### Description
+- add the bullet authoring script for getting speed and damage
+- add `bulletMover` system to move the bullet towards the target, damage the target and destroy the bullet after hit
+- Add the `EntitiesReferencesAuthoring` which would be responsible for containing gameobject prefab which later to use Instantiating as Entity.
+- Spawn the bullet, when Zombie comes into attack range of Soldier
+### NOTE :
+- when the component is not attached to any Entity, we are going to use `SystemAPI.GetSingleton`.
+  - like in our case, we want to use the `EntitiesReferences` component, we need to access using `SystemAPI.GetSingleton<T>()`,
+  - `EntitiesReferences entitiesReferences = SystemAPI.GetSingleton<EntitiesReferences>();`
+- If we want to Instantiate the Entity, we will use `state.EntityManager.Instantiate`
+  - `Entity bulletEntity = state.EntityManager.Instantiate(entitiesReferences.bulletPrefabEntity);`  
+
+![image](https://github.com/user-attachments/assets/1e0ffe5c-dc42-4737-be2b-381742c95b95)
