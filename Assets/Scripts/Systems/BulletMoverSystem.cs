@@ -19,6 +19,7 @@ partial struct BulletMoverSystem : ISystem
         {
             if (target.ValueRO.targetEntity == Entity.Null)
             {
+                entityCommandBuffer.DestroyEntity(entity);
                 continue;
             }
             
