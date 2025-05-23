@@ -193,3 +193,42 @@ That's why we are not using SpriteRenderer but MeshRenderer
 - added components to Zombie. Zombie does not have shoot attack because it will do Melee
 ![image](https://github.com/user-attachments/assets/c4eade7d-a205-495d-ae2b-fe9979e94656)
 
+## Lesson - 15, Health
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/15_health)
+- (PR - https://github.com/gauravgitlab/ECS/pull/15)
+### Description
+- add the `heath` Component in `Base Unit` Prefab
+- reducing the health of the target entity, in ShootAttackSystem
+- Write `HealthDeadTestSystem` to destroy the entity when its health reduced to 0, using EntityCommandBuffer
+- Write `ResetTargetSystem` to make the entity Null, when its destroyed.
+- we need to attach Linked Entity Group Authoring Component to BaseUnit prefab, because when we destroy the Entity it were just destroy the entity, but not the mesh in child component.
+
+![image](https://github.com/user-attachments/assets/8e2e5fbf-924e-4bc9-a203-543b64e11bbe)
+
+## Lesson - 16, Bullet
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/16_bullet)
+- (PR - https://github.com/gauravgitlab/ECS/pull/16)
+### Description
+- add the bullet authoring script for getting speed and damage
+- add `bulletMover` system to move the bullet towards the target, damage the target and destroy the bullet after hit
+- Add the `EntitiesReferencesAuthoring` which would be responsible for containing gameobject prefab which later to use Instantiating as Entity.
+- Spawn the bullet, when Zombie comes into attack range of Soldier
+### NOTE :
+- when the component is not attached to any Entity, we are going to use `SystemAPI.GetSingleton`.
+  - like in our case, we want to use the `EntitiesReferences` component, we need to access using `SystemAPI.GetSingleton<T>()`,
+  - `EntitiesReferences entitiesReferences = SystemAPI.GetSingleton<EntitiesReferences>();`
+- If we want to Instantiate the Entity, we will use `state.EntityManager.Instantiate`
+  - `Entity bulletEntity = state.EntityManager.Instantiate(entitiesReferences.bulletPrefabEntity);`  
+
+![image](https://github.com/user-attachments/assets/1e0ffe5c-dc42-4737-be2b-381742c95b95)
+
+## Lesson - 17, Shooting Improvements
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/17_shooting_improvements)
+- (PR - https://github.com/gauravgitlab/ECS/pull/17)
+### Description
+We actually did 3 Improvement in this PR
+- Soldier Entities are rotating towards Zombie when shooting
+- Bullet position when firing was coming from Soldier Leg position, but now its coming from Gun Position, and hitting the Zombie chest position instead of leg.
+- Previously, the soldier were shooting and moving at the same time, but now we add the attack distance where when soldier comes into attack Range, it start shooting and stop moving.
+
+![image](https://github.com/user-attachments/assets/9f9fcef1-20e3-4324-8a9e-09ff90302fe7)
