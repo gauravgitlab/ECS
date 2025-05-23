@@ -24,26 +24,28 @@ partial struct BulletMoverSystem : ISystem
             }
             
             LocalTransform targetLocalTransform = SystemAPI.GetComponent<LocalTransform>(target.ValueRO.targetEntity);
+            ShootVictim shootVictim = SystemAPI.GetComponent<ShootVictim>(target.ValueRO.targetEntity);
+            float3 targetPosition = targetLocalTransform.TransformPoint(shootVictim.hitLocalPosition);
             
-            float distanceBeforeSq = math.distancesq(localTransform.ValueRO.Position, targetLocalTransform.Position);
+            float distanceBeforeSq = math.distancesq(localTransform.ValueRO.Position, targetPosition);
             
             // move bullet towards target
-            float3 moveDirection = targetLocalTransform.Position - localTransform.ValueRO.Position;
+            float3 moveDirection = targetPosition - localTransform.ValueRO.Position;
             moveDirection = math.normalize(moveDirection);
 
             localTransform.ValueRW.Position += bullet.ValueRO.speed * SystemAPI.Time.DeltaTime * moveDirection;
 
             // check if bullet overshooting the target
-            float distanceAfterSq = math.distancesq(localTransform.ValueRO.Position, targetLocalTransform.Position);
+            float distanceAfterSq = math.distancesq(localTransform.ValueRO.Position, targetPosition);
             if (distanceAfterSq > distanceBeforeSq)
             {
                 // overshot
-                localTransform.ValueRW.Position = targetLocalTransform.Position;
+                localTransform.ValueRW.Position = targetPosition;
             }
 
             // damage the target if the bullet is close enough and destroy the bullet
             float destroyDistanceSq = 0.2f;
-            if(math.distancesq(localTransform.ValueRO.Position, targetLocalTransform.Position) < destroyDistanceSq)
+            if(math.distancesq(localTransform.ValueRO.Position, targetPosition) < destroyDistanceSq)
             {
                 // add damage to the target
                 RefRW<Health> targetHealth = SystemAPI.GetComponentRW<Health>(target.ValueRO.targetEntity);
