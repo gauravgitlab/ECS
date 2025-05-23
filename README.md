@@ -204,7 +204,7 @@ That's why we are not using SpriteRenderer but MeshRenderer
 
 ![image](https://github.com/user-attachments/assets/8e2e5fbf-924e-4bc9-a203-543b64e11bbe)
 
-## Lesson - 15, Bullet
+## Lesson - 16, Bullet
 - (Branch - https://github.com/gauravgitlab/ECS/tree/features/16_bullet)
 - (PR - https://github.com/gauravgitlab/ECS/pull/16)
 ### Description
@@ -220,3 +220,14 @@ That's why we are not using SpriteRenderer but MeshRenderer
   - `Entity bulletEntity = state.EntityManager.Instantiate(entitiesReferences.bulletPrefabEntity);`  
 
 ![image](https://github.com/user-attachments/assets/1e0ffe5c-dc42-4737-be2b-381742c95b95)
+
+## Lesson - 17, Shooting Improvements
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/17_shooting_improvements)
+- (PR - https://github.com/gauravgitlab/ECS/pull/17)
+### Description
+We actually did 3 Improvement in this PR
+- Soldier Entities are rotating towards Zombie when shooting
+- Bullet position when firing was coming from Soldier Leg position, but now its coming from Gun Position, and hitting the Zombie chest position instead of leg.
+- Previously, the soldier were shooting and moving at the same time, but now we add the attack distance where when soldier comes into attack Range, it start shooting and stop moving.
+
+![image](https://github.com/user-attachments/assets/9f9fcef1-20e3-4324-8a9e-09ff90302fe7)
