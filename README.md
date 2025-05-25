@@ -231,3 +231,14 @@ We actually did 3 Improvement in this PR
 - Previously, the soldier were shooting and moving at the same time, but now we add the attack distance where when soldier comes into attack Range, it start shooting and stop moving.
 
 ![image](https://github.com/user-attachments/assets/9f9fcef1-20e3-4324-8a9e-09ff90302fe7)
+
+## Lesson - 18, Spawn Zombies and moving in Random directions
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/18_zombie_spawner)
+- (PR - https://github.com/gauravgitlab/ECS/pull/18)
+### Description
+- Spawn zombies using `ZombieSpawnerSystem` which keep generating zombie after certain period of time
+- move zombies in random directions using `RandomWalkingSystem`,
+### NOTE :
+- we are adding the `RandomWalking` Component at run time, when we instantiate the zombie entity, to initialize the seed. In this way we are not attaching the `RandomWalkingAuthoring` component to gameobject
+
+![image](https://github.com/user-attachments/assets/f6b038d7-04fb-4e39-9f95-61a7ad0e644d)
