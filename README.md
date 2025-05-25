@@ -242,3 +242,15 @@ We actually did 3 Improvement in this PR
 - we are adding the `RandomWalking` Component at run time, when we instantiate the zombie entity, to initialize the seed. In this way we are not attaching the `RandomWalkingAuthoring` component to gameobject
 
 ![image](https://github.com/user-attachments/assets/f6b038d7-04fb-4e39-9f95-61a7ad0e644d)
+
+## Lesson - 19, Health Bar
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/19_health_bar)
+- (PR - https://github.com/gauravgitlab/ECS/pull/19)
+### Description
+- adding the health bar in base prefab.
+- adding the `HealthBarSystem` which update the health bar
+- we are rotating the Health bar to face the camera always
+- We added the event `OnHealthChanged`, so system not need to run on update
+
+<img src="https://github.com/user-attachments/assets/ab86f02b-4cd7-4dd9-bbf0-d5566233d4a1" />
+
