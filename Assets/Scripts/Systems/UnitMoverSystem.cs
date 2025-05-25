@@ -6,11 +6,7 @@ using Unity.Transforms;
 
 partial struct UnitMoverSystem : ISystem
 {
-    [BurstCompile]
-    public void OnCreate(ref SystemState state)
-    {
-        
-    }
+    public const float REACHED_TARGET_POSITION_DISTANCE_SQ = 2.0f;
     
     /// <summary>
     /// NOTE
@@ -44,12 +40,6 @@ partial struct UnitMoverSystem : ISystem
         //     physicsVelocity.ValueRW.Angular = float3.zero;
         // }
     }
-
-    [BurstCompile]
-    public void OnDestroy(ref SystemState state)
-    {
-        
-    }
 }
 
 /// <summary>
@@ -78,7 +68,7 @@ public partial struct UnitMoverJob : IJobEntity
         float3 moveDirection = targetPosition - localTransform.Position;
         
         // stop the unit, when moves near to target position.
-        const float reachedTargetDistanceSq = 2.0f;
+        const float reachedTargetDistanceSq = UnitMoverSystem.REACHED_TARGET_POSITION_DISTANCE_SQ;
         if (math.lengthsq(moveDirection) < reachedTargetDistanceSq)
         {
             physicsVelocity.Linear = float3.zero;
