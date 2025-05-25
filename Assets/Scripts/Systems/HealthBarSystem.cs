@@ -37,7 +37,6 @@ partial struct HealthBarSystem : ISystem
             
             float healthNormalized = (float)health.healthAmount / health.healthAmountMax;
             localTransform.ValueRW.Scale = healthNormalized == 1f ? 0f : 1f;
-            Debug.Log($"health visual update : {health.healthAmount}");
             
             // NOTE : we cant use `RefRW<LocalTransform>` to set the scale, because scale is float instead of float3, which will set the scale uniformly in all directions.
             // in the health bar, we want to set only in x direction to set the bar
