@@ -232,3 +232,46 @@ We actually did 3 Improvement in this PR
 - Previously, the soldier were shooting and moving at the same time, but now we add the attack distance where when soldier comes into attack Range, it start shooting and stop moving.
 
 ![image](https://github.com/user-attachments/assets/9f9fcef1-20e3-4324-8a9e-09ff90302fe7)
+
+## Lesson - 18, Spawn Zombies and moving in Random directions
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/18_zombie_spawner)
+- (PR - https://github.com/gauravgitlab/ECS/pull/18)
+### Description
+- Spawn zombies using `ZombieSpawnerSystem` which keep generating zombie after certain period of time
+- move zombies in random directions using `RandomWalkingSystem`,
+### NOTE :
+- we are adding the `RandomWalking` Component at run time, when we instantiate the zombie entity, to initialize the seed. In this way we are not attaching the `RandomWalkingAuthoring` component to gameobject
+
+![image](https://github.com/user-attachments/assets/f6b038d7-04fb-4e39-9f95-61a7ad0e644d)
+
+## Lesson - 19, Health Bar
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/19_health_bar)
+- (PR - https://github.com/gauravgitlab/ECS/pull/19)
+### Description
+- adding the health bar in base prefab.
+- adding the `HealthBarSystem` which update the health bar
+- we are rotating the Health bar to face the camera always
+- We added the event `OnHealthChanged`, so system not need to run on update
+
+<img src="https://github.com/user-attachments/assets/ab86f02b-4cd7-4dd9-bbf0-d5566233d4a1" />
+
+## Lesson - 20, Shoot Light 
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/20_shoot_light)
+- (PR - https://github.com/gauravgitlab/ECS/pull/20)
+### Description
+- add Prefab of `ShootLight`, which is a point light.
+- Add `ShootLightSpawnerSystem`, which is actually a event listener, when we shoot to target, we fire an event called `onShoot`, which is listen by `ShootLightSpawnerSystem` to instantiate `theShootLight` prefab
+- Add `ShootLightDestroySystem` which is responsible to destroy the `ShootLight` prefab after certain period of time.
+
+![image](https://github.com/user-attachments/assets/8900a1f2-b620-4fd5-97cd-6c3e5db76047)
+
+## Lesson - 21, Melee Attacks and Improvements
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/21_melee_attacks)
+- (PR - https://github.com/gauravgitlab/ECS/pull/21)
+### Description
+- add `MeleeAttackSystem`, so zombie can do melee attacks to Soldier
+- Add `MoveOverrideSystem`, so user can assign target position while soldier are shooting to zombie.
+- Add `SetupUnitMoverDefaultPositionSystem`, so Soldier can't move to default position(0,0,0), when start of the game, this system just set the position and delete the component.
+
+![image](https://github.com/user-attachments/assets/05ad9828-c69a-4246-a344-4f36126b95b4)
+
