@@ -254,3 +254,12 @@ We actually did 3 Improvement in this PR
 
 <img src="https://github.com/user-attachments/assets/ab86f02b-4cd7-4dd9-bbf0-d5566233d4a1" />
 
+## Lesson - 20, Shoot Light 
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/20_shoot_light)
+- (PR - https://github.com/gauravgitlab/ECS/pull/20)
+### Description
+- add Prefab of `ShootLight`, which is a point light.
+- Add `ShootLightSpawnerSystem`, which is actually a event listener, when we shoot to target, we fire an event called `onShoot`, which is listen by `ShootLightSpawnerSystem` to instantiate `theShootLight` prefab
+- Add `ShootLightDestroySystem` which is responsible to destroy the `ShootLight` prefab after certain period of time.
+
+![image](https://github.com/user-attachments/assets/8900a1f2-b620-4fd5-97cd-6c3e5db76047)
