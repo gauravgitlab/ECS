@@ -263,3 +263,14 @@ We actually did 3 Improvement in this PR
 - Add `ShootLightDestroySystem` which is responsible to destroy the `ShootLight` prefab after certain period of time.
 
 ![image](https://github.com/user-attachments/assets/8900a1f2-b620-4fd5-97cd-6c3e5db76047)
+
+## Lesson - 21, Melee Attacks and Improvements
+- (Branch - https://github.com/gauravgitlab/ECS/tree/features/21_melee_attacks)
+- (PR - https://github.com/gauravgitlab/ECS/pull/21)
+### Description
+- add `MeleeAttackSystem`, so zombie can do melee attacks to Soldier
+- Add `MoveOverrideSystem`, so user can assign target position while soldier are shooting to zombie.
+- Add `SetupUnitMoverDefaultPositionSystem`, so Soldier can't move to default position(0,0,0), when start of the game, this system just set the position and delete the component.
+
+![image](https://github.com/user-attachments/assets/05ad9828-c69a-4246-a344-4f36126b95b4)
+
