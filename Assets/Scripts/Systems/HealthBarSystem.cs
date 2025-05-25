@@ -4,9 +4,10 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
 
+[UpdateInGroup(typeof(LateSimulationSystemGroup))]
 partial struct HealthBarSystem : ISystem
 {
-    [BurstCompile]
+    //[BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
         // we are using camera forward to set the health bar rotation always towards the camera
@@ -20,14 +21,23 @@ partial struct HealthBarSystem : ISystem
                  SystemAPI.Query<RefRW<LocalTransform>, RefRO<HealthBar>>())
         {
             // set bar rotation towards the camera
-            LocalTransform parentLocalTransform = SystemAPI.GetComponent<LocalTransform>(healthBar.ValueRO.healthEntity);
-            localTransform.ValueRW.Rotation = parentLocalTransform.InverseTransformRotation(quaternion.LookRotation(cameraForward, math.up()));
+            if (localTransform.ValueRO.Scale == 1f)
+            {
+                LocalTransform parentLocalTransform = SystemAPI.GetComponent<LocalTransform>(healthBar.ValueRO.healthEntity);
+                localTransform.ValueRW.Rotation = parentLocalTransform.InverseTransformRotation(quaternion.LookRotation(cameraForward, math.up()));
+            }
             
             // get health bar value
             Health health = SystemAPI.GetComponent<Health>(healthBar.ValueRO.healthEntity);
+            if(!health.onHealthChanged)
+            {
+                // if health is not changed, we don't need to update the health bar
+                continue;
+            }
+            
             float healthNormalized = (float)health.healthAmount / health.healthAmountMax;
-
             localTransform.ValueRW.Scale = healthNormalized == 1f ? 0f : 1f;
+            Debug.Log($"health visual update : {health.healthAmount}");
             
             // NOTE : we cant use `RefRW<LocalTransform>` to set the scale, because scale is float instead of float3, which will set the scale uniformly in all directions.
             // in the health bar, we want to set only in x direction to set the bar

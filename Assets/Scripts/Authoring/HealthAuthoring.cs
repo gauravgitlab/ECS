@@ -14,7 +14,8 @@ public class HealthAuthoring : MonoBehaviour
             AddComponent(entity, new Health
             {
                 healthAmount = authoring.healthAmount,
-                healthAmountMax = authoring.healthAmountMax
+                healthAmountMax = authoring.healthAmountMax,
+                onHealthChanged = true
             });
         }
     }
@@ -24,4 +25,5 @@ public struct Health : IComponentData
 {
     public int healthAmount;
     public int healthAmountMax;
+    public bool onHealthChanged; // This is used to notify systems that the health has changed
 }
